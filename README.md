@@ -1,3 +1,6 @@
+![Logo](/logo.png)
+
+...existing content...
 Soltick aims to fully tokenize the ticketing process of organizations such as concerts, theatres, football matches etc.
 
 Organizations can create tickets for an event issuing a certain amount, if the event is cancelled refunding is ensured by the solana program.
