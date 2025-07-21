@@ -1,4 +1,4 @@
-![Logo](/logo.png)
+![Logo](/public/logo.png)
 
 ...existing content...
 Soltick aims to fully tokenize the ticketing process of organizations such as concerts, theatres, football matches etc.
