@@ -65,7 +65,7 @@ export const MarketplaceExplanation = () => {
         <p style={styles.subtitle}>
           If your plans change, you can instantly list unwanted tickets on
           Soltick’s on-chain marketplace—no more scrambling through WhatsApp
-          groups
+          groups.
         </p>
         <button
           style={styles.button}
