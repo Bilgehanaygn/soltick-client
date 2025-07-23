@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { DescribeContainer } from "./DescribeContainer";
+import { SoltickExplanation } from "./SoltickExplanation";
+import { MarketplaceExplanation } from "./MarketplaceExplanation";
 
 const LandingPage = () => {
   return (
@@ -31,10 +32,10 @@ const LandingPage = () => {
           <source src="/bg-vid.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <DescribeContainer />
+        <SoltickExplanation />
       </div>
 
-      <div style={{ display: "flex", width: "100%" }}>
+      <div style={{ display: "flex", width: "100%", position: "relative" }}>
         <div style={{ flex: 1 }}>
           <Image
             src="/Landing2-1.png"
@@ -52,6 +53,15 @@ const LandingPage = () => {
             height={600}
             style={{ width: "100%", height: "auto", opacity: 0.6 }}
           />
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}>
+          <MarketplaceExplanation />
         </div>
       </div>
     </div>

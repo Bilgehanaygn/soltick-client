@@ -10,9 +10,7 @@ const styles: Record<string, Style> = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height: "100vh",
     margin: 0,
-    // backgroundImage: `url(${bgImage})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -53,20 +51,21 @@ const styles: Record<string, Style> = {
   },
 };
 
-export const DescribeContainer = () => {
+export const MarketplaceExplanation = () => {
   const router = useRouter();
   const handleCreateEvent = () => {
-    router.push("/create");
+    router.push("/marketplace");
   };
 
   return (
     <div style={styles.container}>
       <div style={styles.content}>
         <h1 style={styles.title}>Soltick</h1>
+        <h1 style={styles.title}>Marketplace</h1>
         <p style={styles.subtitle}>
-          Soltick is a decentralized event ticketing platform on Solana. Create
-          and manage events by specifying ticket quantities and prices, then let
-          attendees purchase securely on-chain.
+          If your plans change, you can instantly list unwanted tickets on
+          Soltick’s on-chain marketplace—no more scrambling through WhatsApp
+          groups
         </p>
         <button
           style={styles.button}
@@ -76,11 +75,13 @@ export const DescribeContainer = () => {
               styles.buttonHover
             )
           }
-          onMouseLeave={(e) =>
-            Object.assign((e.target as HTMLButtonElement).style, styles.button)
-          }
+          onMouseLeave={(e) => {
+            const style = (e.target as HTMLButtonElement).style;
+            style.transform = "none";
+            style.boxShadow = "none";
+          }}
           onClick={handleCreateEvent}>
-          Create an Event
+          List Your Tickets
         </button>
       </div>
     </div>
