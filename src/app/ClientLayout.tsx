@@ -1,6 +1,6 @@
 "use client";
 
-import { SolanaMultiWalletProvider } from "@/components/wallet-adapter/SolanaMultiWalletProvider";
+import { SolanaMultiWalletProvider } from "@/components/client/wallet-adapter/SolanaMultiWalletProvider";
 
 const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   return (

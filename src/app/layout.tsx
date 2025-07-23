@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import TopBar from "@/components/topbar/TopBar";
+import TopBar from "@/components/client/topbar/TopBar";
 import ClientLayout from "./ClientLayout";
 
 const geistSans = Geist({

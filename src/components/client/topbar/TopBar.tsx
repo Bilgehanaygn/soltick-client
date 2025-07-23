@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import themeColor from "../../constants/theme";
+import themeColor from "../../../constants/theme";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { menuItems } from "./menu-items";
