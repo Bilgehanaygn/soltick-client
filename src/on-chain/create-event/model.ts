@@ -1,7 +1,7 @@
-import * as borsh from "borsh";
+import * as borsh from 'borsh';
 
 export const EVENT_ACCOUNT_SPACE = 134;
-export const CREATE_EVENT_DISCRIMINATOR = Buffer.from([0]);
+export const CREATE_EVENT_DISCRIMINATOR = Uint8Array.from([0]);
 
 export class CreateEventInstruction {
   price: number;
@@ -33,15 +33,15 @@ export class CreateEventInstruction {
 
 export const CreateEventBorshSchema: borsh.Schema = {
   struct: {
-    price: "u16",
-    tickets_total: "u16",
-    event_name: { array: { type: "u8", len: 48 } },
-    event_address: { array: { type: "u8", len: 48 } },
+    price: 'u16',
+    tickets_total: 'u16',
+    event_name: { array: { type: 'u8', len: 48 } },
+    event_address: { array: { type: 'u8', len: 48 } },
   },
 };
 
 function encodeFixedString(str: string, length: number): Uint8Array {
   const buf = Buffer.alloc(length);
-  buf.write(str, 0, "utf8");
+  buf.write(str, 0, 'utf8');
   return Uint8Array.from(buf);
 }

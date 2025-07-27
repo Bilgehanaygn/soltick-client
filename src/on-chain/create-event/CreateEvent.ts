@@ -7,16 +7,16 @@ import {
   SYSVAR_RENT_PUBKEY,
   Transaction,
   TransactionInstruction,
-} from "@solana/web3.js";
-import * as borsh from "borsh";
+} from '@solana/web3.js';
+import * as borsh from 'borsh';
 import {
   CREATE_EVENT_DISCRIMINATOR,
   CreateEventBorshSchema,
   CreateEventInstruction,
   EVENT_ACCOUNT_SPACE,
-} from "./model";
-import { getProgramId } from "../utils/getProgramId";
-import { CreateEventModel } from "@/components/client/create-event/model";
+} from './model';
+import { getProgramId } from '../utils/getProgramId';
+import { CreateEventModel } from '@/components/client/create-event/model';
 
 export const handleCreateEvent = async ({
   publicKey,
@@ -28,9 +28,8 @@ export const handleCreateEvent = async ({
   eventData: CreateEventModel;
 }) => {
   const eventAccount = Keypair.generate();
-  const lamports = await connection.getMinimumBalanceForRentExemption(
-    EVENT_ACCOUNT_SPACE
-  );
+  const lamports =
+    await connection.getMinimumBalanceForRentExemption(EVENT_ACCOUNT_SPACE);
 
   const inst = new CreateEventInstruction({
     price: eventData.price,
@@ -40,10 +39,13 @@ export const handleCreateEvent = async ({
   });
 
   const payload = borsh.serialize(CreateEventBorshSchema, inst);
-  const data = Buffer.concat([
-    CREATE_EVENT_DISCRIMINATOR,
-    Buffer.from(payload),
-  ]);
+  const dataUint8 = new Uint8Array(
+    CREATE_EVENT_DISCRIMINATOR.byteLength + payload.byteLength
+  );
+
+  dataUint8.set(CREATE_EVENT_DISCRIMINATOR, 0);
+  dataUint8.set(payload, CREATE_EVENT_DISCRIMINATOR.byteLength);
+  const data = Buffer.from(dataUint8);
 
   const createAccountIx = SystemProgram.createAccount({
     fromPubkey: publicKey,
@@ -73,19 +75,19 @@ export const handleCreateEvent = async ({
     connection,
     tx,
     [eventAccount],
-    { commitment: "processed" }
+    { commitment: 'processed' }
   );
 
-  const latestBlockHash = await connection.getLatestBlockhash("processed");
+  const latestBlockHash = await connection.getLatestBlockhash('processed');
   await connection.confirmTransaction(
     {
       signature: signature,
       blockhash: latestBlockHash.blockhash,
       lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
     },
-    "processed"
+    'processed'
   );
 
-  console.log("Event created:", signature);
+  console.log('Event created:', signature);
   alert(`Event created! Transaction signature: ${signature}`);
 };
