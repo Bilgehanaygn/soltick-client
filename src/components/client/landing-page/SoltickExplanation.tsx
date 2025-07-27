@@ -12,7 +12,6 @@ const styles: Record<string, Style> = {
     justifyContent: "center",
     height: "100vh",
     margin: 0,
-    // backgroundImage: `url(${bgImage})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",

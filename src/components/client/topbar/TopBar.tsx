@@ -11,6 +11,7 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     backgroundColor: "#FFFFFF",
+    paddingLeft: "20px",
   },
   groupedButtonContainer: {
     display: "flex",
