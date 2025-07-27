@@ -35,22 +35,32 @@ const LandingPage = () => {
       </div>
 
       <div style={{ display: "flex", width: "100%", position: "relative" }}>
-        <div style={{ flex: 1 }}>
+        <div
+          style={{
+            width: "50%",
+            height: "100vh",
+            backgroundColor: "black",
+            position: "relative",
+          }}>
           <Image
             src="/Landing2-1.png"
             alt="Landing Image 1"
-            width={800}
-            height={600}
-            style={{ width: "100%", height: "auto" }}
+            fill
+            objectFit="cover"
           />
         </div>
-        <div style={{ flex: 1 }}>
+        <div
+          style={{
+            width: "50%",
+            height: "100vh",
+            backgroundColor: "purple",
+            position: "relative",
+          }}>
           <Image
             src="/Landing2-2.png"
             alt="Landing Image 2"
-            width={800}
-            height={600}
-            style={{ width: "100%", height: "auto" }}
+            layout="fill"
+            objectFit="cover"
           />
         </div>
         <div
