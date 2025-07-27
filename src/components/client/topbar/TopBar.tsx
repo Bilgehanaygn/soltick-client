@@ -1,10 +1,11 @@
 "use client";
+
 import React from "react";
-import themeColor from "../../../constants/theme";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { menuItems } from "./menu-items";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { useTheme } from "@mui/material/styles";
 
 const styles = {
   container: {
@@ -30,14 +31,14 @@ const styles = {
     cursor: "pointer",
     transition: "background 0.3s",
   },
-  active: {
-    background: themeColor,
-  },
 };
 
-const TopBar = () => {
+const TopBar: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
+  const theme = useTheme();
+  const activeBg = theme.palette.primary.main;
+  const activeColor = theme.palette.getContrastText(activeBg);
 
   return (
     <div style={styles.container}>
@@ -49,18 +50,23 @@ const TopBar = () => {
           height={60}
           style={styles.logo}
         />
-        {menuItems.map((item) => (
-          <button
-            key={item.path}
-            onClick={() => router.push(item.path)}
-            style={
-              pathname === item.path
-                ? { ...styles.button, ...styles.active }
-                : styles.button
-            }>
-            {item.name}
-          </button>
-        ))}
+        {menuItems.map((item) => {
+          const isActive = pathname === item.path;
+          return (
+            <button
+              key={item.path}
+              onClick={() => router.push(item.path)}
+              style={{
+                ...styles.button,
+                ...(isActive && {
+                  backgroundColor: activeBg,
+                  color: activeColor,
+                }),
+              }}>
+              {item.name}
+            </button>
+          );
+        })}
       </div>
       <div style={styles.groupedButtonContainer}>
         <WalletMultiButton />

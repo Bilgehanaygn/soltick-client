@@ -1,11 +1,12 @@
 "use client";
+
 import React from "react";
 import { useRouter } from "next/navigation";
-import themeColor from "@/constants/theme";
+import { useTheme } from "@mui/material/styles";
 
 type Style = React.CSSProperties;
 
-const styles: Record<string, Style> = {
+const staticStyles: Record<string, Style> = {
   container: {
     display: "flex",
     alignItems: "center",
@@ -27,7 +28,6 @@ const styles: Record<string, Style> = {
   title: {
     fontSize: "3rem",
     fontWeight: 700,
-    color: themeColor,
     marginBottom: "1rem",
   },
   subtitle: {
@@ -39,11 +39,10 @@ const styles: Record<string, Style> = {
   button: {
     padding: "0.75rem 1.5rem",
     fontSize: "1rem",
-    backgroundColor: themeColor,
-    color: "#000000",
     border: "none",
     borderRadius: "6px",
     cursor: "pointer",
+    textTransform: "none",
     transition: "transform 0.2s ease, box-shadow 0.2s ease",
   },
   buttonHover: {
@@ -52,28 +51,34 @@ const styles: Record<string, Style> = {
   },
 };
 
-export const SoltickExplanation = () => {
+const SoltickExplanation: React.FC = () => {
   const router = useRouter();
+  const theme = useTheme();
+  const themeColor = theme.palette.primary.main;
 
   const handleCreateEvent = () => {
     router.push("/create");
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.content}>
-        <h1 style={styles.title}>Soltick</h1>
-        <p style={styles.subtitle}>
+    <div style={staticStyles.container}>
+      <div style={staticStyles.content}>
+        <h1 style={{ ...staticStyles.title, color: themeColor }}>Soltick</h1>
+        <p style={staticStyles.subtitle}>
           Soltick is a decentralized event ticketing platform on Solana. Create
           and manage events by specifying ticket quantities and prices, then let
           attendees purchase securely on-chain.
         </p>
         <button
-          style={styles.button}
+          style={{
+            ...staticStyles.button,
+            backgroundColor: themeColor,
+            color: theme.palette.getContrastText(themeColor),
+          }}
           onMouseEnter={(e) =>
             Object.assign(
               (e.target as HTMLButtonElement).style,
-              styles.buttonHover
+              staticStyles.buttonHover
             )
           }
           onMouseLeave={(e) => {
@@ -88,3 +93,5 @@ export const SoltickExplanation = () => {
     </div>
   );
 };
+
+export default SoltickExplanation;

@@ -6,6 +6,7 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { handleCreateEvent } from "@/on-chain/create-event/CreateEvent";
 import { CreateEventModel, createEventSchema } from "./model";
 import { Connection } from "@solana/web3.js";
+import { Box, Paper, Typography, TextField, Button } from "@mui/material";
 
 const CreateEventForm: React.FC = () => {
   const { connection }: { connection: Connection } = useConnection();
@@ -41,43 +42,79 @@ const CreateEventForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="price">Price</label>
-        <input
-          id="price"
+    <Box
+      component="form"
+      onSubmit={handleSubmit(onSubmit)}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        mt: 4,
+      }}>
+      <Paper
+        elevation={3}
+        sx={{
+          backgroundColor: "rgba(255,255,255,0.7)",
+          borderRadius: 2,
+          p: 4,
+          width: "100%",
+          maxWidth: 600,
+        }}>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Create Event
+        </Typography>
+
+        <TextField
+          label="Price"
           type="number"
-          step="1"
+          inputProps={{ step: 1 }}
+          fullWidth
+          margin="normal"
           {...register("price", { valueAsNumber: true })}
+          error={!!errors.price}
+          helperText={errors.price?.message}
         />
-        {errors.price && <p>{errors.price.message}</p>}
-      </div>
 
-      <div>
-        <label htmlFor="tickets_total">Total Tickets</label>
-        <input
-          id="tickets_total"
+        <TextField
+          label="Total Tickets"
           type="number"
-          step="1"
+          inputProps={{ step: 1 }}
+          fullWidth
+          margin="normal"
           {...register("tickets_total", { valueAsNumber: true })}
+          error={!!errors.tickets_total}
+          helperText={errors.tickets_total?.message}
         />
-        {errors.tickets_total && <p>{errors.tickets_total.message}</p>}
-      </div>
 
-      <div>
-        <label htmlFor="event_name">Event Name</label>
-        <input id="event_name" type="text" {...register("event_name")} />
-        {errors.event_name && <p>{errors.event_name.message}</p>}
-      </div>
+        <TextField
+          label="Event Name"
+          type="text"
+          fullWidth
+          margin="normal"
+          {...register("event_name")}
+          error={!!errors.event_name}
+          helperText={errors.event_name?.message}
+        />
 
-      <div>
-        <label htmlFor="event_address">Event Address</label>
-        <input id="event_address" type="text" {...register("event_address")} />
-        {errors.event_address && <p>{errors.event_address.message}</p>}
-      </div>
+        <TextField
+          label="Event Address"
+          type="text"
+          fullWidth
+          margin="normal"
+          {...register("event_address")}
+          error={!!errors.event_address}
+          helperText={errors.event_address?.message}
+        />
 
-      <button type="submit">Create Event</button>
-    </form>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{ mt: 3 }}>
+          Create Event
+        </Button>
+      </Paper>
+    </Box>
   );
 };
 
