@@ -27,7 +27,6 @@ const LandingPage = () => {
             height: "100%",
             objectFit: "cover",
             zIndex: -1,
-            opacity: 0.4,
           }}>
           <source src="/bg-vid.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -42,7 +41,7 @@ const LandingPage = () => {
             alt="Landing Image 1"
             width={800}
             height={600}
-            style={{ width: "100%", height: "auto", opacity: 0.6 }}
+            style={{ width: "100%", height: "auto" }}
           />
         </div>
         <div style={{ flex: 1 }}>
@@ -51,7 +50,7 @@ const LandingPage = () => {
             alt="Landing Image 2"
             width={800}
             height={600}
-            style={{ width: "100%", height: "auto", opacity: 0.6 }}
+            style={{ width: "100%", height: "auto" }}
           />
         </div>
         <div

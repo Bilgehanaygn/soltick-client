@@ -51,7 +51,7 @@ const staticStyles: Record<string, Style> = {
   },
 };
 
-const SoltickExplanation: React.FC = () => {
+export const SoltickExplanation: React.FC = () => {
   const router = useRouter();
   const theme = useTheme();
   const themeColor = theme.palette.primary.main;
@@ -93,5 +93,3 @@ const SoltickExplanation: React.FC = () => {
     </div>
   );
 };
-
-export default SoltickExplanation;
