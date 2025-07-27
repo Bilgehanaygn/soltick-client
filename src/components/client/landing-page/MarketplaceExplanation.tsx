@@ -1,51 +1,51 @@
-"use client";
-import React from "react";
-import { useRouter } from "next/navigation";
-import { useTheme } from "@mui/material/styles";
+'use client';
+import React from 'react';
+import { useRouter } from 'next/navigation';
+import { useTheme } from '@mui/material/styles';
 
 type Style = React.CSSProperties;
 
 const staticStyles: Record<string, Style> = {
   container: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     margin: 0,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
   },
   content: {
-    backgroundColor: "rgba(255, 255, 255, 0.85)",
-    padding: "2rem",
-    borderRadius: "12px",
-    textAlign: "center",
-    maxWidth: "640px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    padding: '2rem',
+    borderRadius: '12px',
+    textAlign: 'center',
+    maxWidth: '640px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
   },
   title: {
-    fontSize: "3rem",
+    fontSize: '3rem',
     fontWeight: 700,
-    marginBottom: "1rem",
+    marginBottom: '1rem',
   },
   subtitle: {
-    fontSize: "1.25rem",
-    color: "#000000",
-    marginBottom: "2rem",
+    fontSize: '1.25rem',
+    color: '#000000',
+    marginBottom: '2rem',
     lineHeight: 1.6,
   },
   button: {
-    padding: "0.75rem 1.5rem",
-    fontSize: "1rem",
-    color: "#000000",
-    border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
-    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+    padding: '0.75rem 1.5rem',
+    fontSize: '1rem',
+    color: '#000000',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
   },
   buttonHover: {
-    transform: "translateY(-2px)",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+    transform: 'translateY(-2px)',
+    boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
   },
 };
 
@@ -55,7 +55,7 @@ export const MarketplaceExplanation = () => {
   const themeColor = theme.palette.primary.main;
 
   const handleCreateEvent = () => {
-    router.push("/marketplace");
+    router.push('/marketplace');
   };
 
   return (
@@ -72,18 +72,19 @@ export const MarketplaceExplanation = () => {
         </p>
         <button
           style={{ ...staticStyles.button, backgroundColor: themeColor }}
-          onMouseEnter={(e) =>
+          onMouseEnter={e =>
             Object.assign(
               (e.target as HTMLButtonElement).style,
               staticStyles.buttonHover
             )
           }
-          onMouseLeave={(e) => {
+          onMouseLeave={e => {
             const style = (e.target as HTMLButtonElement).style;
-            style.transform = "none";
-            style.boxShadow = "none";
+            style.transform = 'none';
+            style.boxShadow = 'none';
           }}
-          onClick={handleCreateEvent}>
+          onClick={handleCreateEvent}
+        >
           List Your Tickets
         </button>
       </div>

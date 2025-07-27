@@ -1,6 +1,6 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from '@mui/material/styles';
 
-const themeColor = "#FFA500";
+const themeColor = '#FFA500';
 
 export const theme = createTheme({
   palette: {
@@ -8,14 +8,14 @@ export const theme = createTheme({
       main: themeColor,
     },
     background: {
-      default: "#ffffff",
-      paper: "#ffffff",
+      default: '#ffffff',
+      paper: '#ffffff',
     },
     text: {
-      primary: "#000000",
+      primary: '#000000',
     },
     error: {
-      main: "#f44336",
+      main: '#f44336',
     },
   },
 });

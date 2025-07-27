@@ -1,1 +1,1 @@
-export * from "./SolanaMultiWalletProvider";
+export * from './SolanaMultiWalletProvider';

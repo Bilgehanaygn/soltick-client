@@ -1,35 +1,35 @@
-"use client";
+'use client';
 
-import React from "react";
-import { usePathname, useRouter } from "next/navigation";
-import Image from "next/image";
-import { menuItems } from "./menu-items";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { useTheme } from "@mui/material/styles";
+import React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { menuItems } from './menu-items';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { useTheme } from '@mui/material/styles';
 
 const styles = {
   container: {
-    display: "flex",
-    justifyContent: "space-between",
-    backgroundColor: "#FFFFFF",
-    paddingLeft: "20px",
+    display: 'flex',
+    justifyContent: 'space-between',
+    backgroundColor: '#FFFFFF',
+    paddingLeft: '20px',
   },
   groupedButtonContainer: {
-    display: "flex",
-    alignItems: "center",
-    padding: "5px 10px",
+    display: 'flex',
+    alignItems: 'center',
+    padding: '5px 10px',
   },
   logo: {
-    marginRight: "30px",
+    marginRight: '30px',
   },
   button: {
-    marginRight: "20px",
-    padding: "8px 16px",
-    border: "none",
-    background: "transparent",
-    color: "black",
-    cursor: "pointer",
-    transition: "background 0.3s",
+    marginRight: '20px',
+    padding: '8px 16px',
+    border: 'none',
+    background: 'transparent',
+    color: 'black',
+    cursor: 'pointer',
+    transition: 'background 0.3s',
   },
 };
 
@@ -50,7 +50,7 @@ const TopBar: React.FC = () => {
           height={60}
           style={styles.logo}
         />
-        {menuItems.map((item) => {
+        {menuItems.map(item => {
           const isActive = pathname === item.path;
           return (
             <button
@@ -62,7 +62,8 @@ const TopBar: React.FC = () => {
                   backgroundColor: activeBg,
                   color: activeColor,
                 }),
-              }}>
+              }}
+            >
               {item.name}
             </button>
           );
